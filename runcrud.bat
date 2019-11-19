@@ -1,4 +1,6 @@
 call gradlew build
+
+
 if "%ERRORLEVEL%" == "0" goto rename
 echo.
 echo GRADLEW BUILD has errors - breaking work

@@ -1,5 +1,6 @@
 call runcrud.bat
 
+
 if "%ERRORLEVEL%" == "0" goto start
 echo.
 echo GRADLEW BUILD has errors - breaking work
