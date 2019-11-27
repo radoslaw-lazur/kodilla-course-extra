@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/v1/trello")
 public class TrelloController {
 
+    private static final String KODILLA = "Kodilla";
     @Autowired
     private TrelloClient trelloClient;
 
@@ -20,7 +21,8 @@ public class TrelloController {
     public void getTrelloBoards() {
 
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().stream()
-                .filter(word -> word.getName().contains("Kodilla"))
+                .filter(word -> !word.getId().isEmpty())
+                .filter(word -> word.getName().contains(KODILLA))
                 .collect(Collectors.toList());
 
         trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
