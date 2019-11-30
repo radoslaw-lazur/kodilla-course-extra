@@ -13,11 +13,4 @@ import lombok.NoArgsConstructor;
 public class AttachmentsByTypeDto {
     @JsonProperty("trello")
     private BadgesTrelloDto badgesTrelloDto;
-
-    @Override
-    public String toString() {
-        return "AttachmentsByTypeDto{" +
-                "badgesTrelloDto=" + badgesTrelloDto +
-                '}';
-    }
 }
