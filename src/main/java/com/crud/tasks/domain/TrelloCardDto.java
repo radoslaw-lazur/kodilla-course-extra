@@ -1,9 +1,9 @@
 package com.crud.tasks.domain;
 
-import com.crud.tasks.domain.badges.TrelloBadgesDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,5 +13,4 @@ public class TrelloCardDto {
     private String description;
     private String pos;
     private String listId;
-    private TrelloBadgesDto trelloBadgesDto;
 }

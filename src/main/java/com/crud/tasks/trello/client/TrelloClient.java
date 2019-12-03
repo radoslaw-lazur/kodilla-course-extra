@@ -1,6 +1,5 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.controller.TrelloBoardNotFound;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
@@ -8,7 +7,6 @@ import com.crud.tasks.trello.config.TrelloConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -30,7 +28,7 @@ public class TrelloClient {
     public List<TrelloBoardDto> getTrelloBoards() {
         try {
             TrelloBoardDto[] boardsResponse = restTemplate.getForObject(getTrelloBoardsURL(), TrelloBoardDto[].class);
-            return Arrays.asList(ofNullable(boardsResponse).orElseThrow(TrelloBoardNotFound::new));
+            return Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
         } catch (RestClientException e) {
             LOGGER.error(e.getMessage(), e);
             return new ArrayList<>();
@@ -57,8 +55,7 @@ public class TrelloClient {
                 .queryParam("name", trelloCardDto.getName())
                 .queryParam("desc", trelloCardDto.getDescription())
                 .queryParam("pos", trelloCardDto.getPos())
-                .queryParam("idList", trelloCardDto.getListId())
-                .queryParam("badges", trelloCardDto.getTrelloBadgesDto()).build().encode().toUri();
+                .queryParam("idList", trelloCardDto.getListId()).build().encode().toUri();
     }
 }
 
