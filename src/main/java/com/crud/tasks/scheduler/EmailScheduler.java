@@ -26,15 +26,7 @@ public class EmailScheduler {
                 adminConfig.getAdminMail(),
                 "",
                 SUBJECT,
-                "Currently in database you have got: " + size + " " + checkCount(size))
+                "Currently in database you have got: " + size + " " + (size == 1 ? "task": "tasks"))
         );
-    }
-
-    private String checkCount(long counter) {
-        if (counter == 1) {
-            return "task";
-        } else {
-            return "tasks";
-        }
     }
 }
