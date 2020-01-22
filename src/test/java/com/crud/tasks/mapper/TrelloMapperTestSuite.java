@@ -51,8 +51,8 @@ public class TrelloMapperTestSuite {
                 true
         );
         trelloBoardDto = new TrelloBoardDto(
-                "test_name",
                 "test_id",
+                "test_name",
                 new ArrayList<>()
         );
         trelloBoard = new TrelloBoard(
