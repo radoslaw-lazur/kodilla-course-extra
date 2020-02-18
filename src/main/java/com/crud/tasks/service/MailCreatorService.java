@@ -55,10 +55,9 @@ public class MailCreatorService {
         contextTrello.setVariable("application_functionality", functionality);
     }
 
-    private List<String> makeListForIteration() {
+    private void makeListForIteration() {
         functionality.add("You can manage your tasks");
         functionality.add("Provides connection with Trello Account");
         functionality.add("Application allows sending tasks to Trello");
-        return functionality;
     }
 }

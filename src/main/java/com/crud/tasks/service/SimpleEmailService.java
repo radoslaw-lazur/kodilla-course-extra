@@ -18,7 +18,7 @@ public class SimpleEmailService {
     @Autowired
     private MailCreatorService mailCreatorService;
     private static final String SUBJECT_SCHEDULER = "Tasks: Trello Cards";
-    private static  final Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
 
     public void send(final Mail mail) {
         LOGGER.info("Starting e-mail preparation...");

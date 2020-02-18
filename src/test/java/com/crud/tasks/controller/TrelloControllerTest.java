@@ -41,7 +41,7 @@ public class TrelloControllerTest {
         List<TrelloBoardDto> trelloBoardDtos = new ArrayList<>();
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoardDtos);
         //When & Then
-        mockMvc.perform(get("/v1/trello/getTrelloBoards").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/trello/boards").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
     }
@@ -55,7 +55,7 @@ public class TrelloControllerTest {
         trelloBoardDtos.add(new TrelloBoardDto("1", "Test Task", trelloListDtos));
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoardDtos);
         //When & Then
-        mockMvc.perform(get("/v1/trello/getTrelloBoards").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/trello/boards").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 //Trello board fields
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -85,7 +85,7 @@ public class TrelloControllerTest {
         String jsonContent = new Gson().toJson(trelloCardDto);
         when(trelloFacade.createCard(ArgumentMatchers.any(TrelloCardDto.class))).thenReturn(createdTrelloCardDto);
         //When & Then
-        mockMvc.perform(post("/v1/trello/createTrelloCard").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/v1/trello/cards").contentType(MediaType.APPLICATION_JSON)
         .characterEncoding("UTF-8")
         .content(jsonContent))
                 .andExpect(jsonPath("$.id", is("323")))
