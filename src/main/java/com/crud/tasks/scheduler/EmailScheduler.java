@@ -16,10 +16,10 @@ public class EmailScheduler {
     private TaskRepository taskRepository;
     @Autowired
     private AdminConfig adminConfig;
-    private static final String SUBJECT = "Tasks: New Trello Card";
+    private static final String SUBJECT = "Tasks: Trello Cards";
 
     //@Scheduled(cron = "0 0 10 * * *")
-    //@Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 100000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         simpleEmailService.send(new Mail(

@@ -17,6 +17,7 @@ public class SimpleEmailService {
     private JavaMailSender javaMailSender;
     @Autowired
     private MailCreatorService mailCreatorService;
+    private static final String SUBJECT_SCHEDULER = "Tasks: Trello Cards";
     private static  final Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
 
     public void send(final Mail mail) {
@@ -45,8 +46,11 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessege()), true);
+            if (mail.getSubject().equals(SUBJECT_SCHEDULER)) {
+                messageHelper.setText(mailCreatorService.buildScheduledTrelloInfoMail(mail.getMessege()), true);
+            } else {
+                messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessege()), true);
+            }
         };
     }
-
 }
