@@ -19,7 +19,6 @@ public class EmailScheduler {
     private static final String SUBJECT = "Tasks: Trello Cards";
 
     @Scheduled(cron = "0 0 10 * * *")
-    //@Scheduled(fixedDelay = 100000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         simpleEmailService.send(new Mail(
