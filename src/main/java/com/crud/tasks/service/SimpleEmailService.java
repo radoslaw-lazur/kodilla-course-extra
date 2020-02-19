@@ -26,19 +26,8 @@ public class SimpleEmailService {
             javaMailSender.send(createMimeMessage(mail));
             LOGGER.info("E-mail has been sent");
         } catch (MailException e) {
-            LOGGER.info("Failed to process e-mail sending: ", e.getMessage(), e);
+            LOGGER.info("Failed to process e-mail sending: {}", e.getMessage(), e);
         }
-    }
-
-    public SimpleMailMessage createMailMessege(final Mail mail) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail.getMailTo());
-        mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mail.getMessege());
-        if (mail.getToCc() != null && !mail.getToCc().equals("")){
-            mailMessage.setCc(mail.getToCc());
-        }
-        return mailMessage;
     }
 
     public MimeMessagePreparator createMimeMessage(final Mail mail) {

@@ -39,7 +39,7 @@ public class MailCreatorService {
     }
 
     private void makeDataTrelloContext() {
-        contextTrello.setVariable("tasks_url", "http://localhost:5000/");
+        contextTrello.setVariable("tasks_url", "https://radoslaw-lazur.github.io/");
         contextTrello.setVariable("button", "Visit website");
         contextTrello.setVariable("goodbye", "Best regards: " + adminConfig.getAdminName());
         contextTrello.setVariable("details", "Company Details:");
@@ -48,9 +48,9 @@ public class MailCreatorService {
         contextTrello.setVariable("app_description", "Company description: " + companyDetails.getAppDescription());
         contextTrello.setVariable("company_mail", "Company e-mail: " + companyDetails.getMail());
         contextTrello.setVariable("company_mobile", "Company mobile: " + companyDetails.getMobile());
-        contextTrello.setVariable("show_button", false);
+        contextTrello.setVariable("show_button", true);
         contextTrello.setVariable("show_button_in_scheduled_mail", true);
-        contextTrello.setVariable("is_friend", true);
+        contextTrello.setVariable("is_friend", false);
         contextTrello.setVariable("is_friend_in_scheduled_mail", false);
         contextTrello.setVariable("admin_config", adminConfig);
         contextTrello.setVariable("application_functionality", functionality);
