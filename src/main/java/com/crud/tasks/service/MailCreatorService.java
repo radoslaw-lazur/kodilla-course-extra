@@ -20,11 +20,11 @@ public class MailCreatorService {
     @Autowired
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
-    private Context contextTrello = new Context();
-
-    private List<String> functionality = new ArrayList<>();
+    private Context contextTrello;
+    private List<String> functionality;
 
     public String buildTrelloCardEmail(String message) {
+        contextTrello = new Context();
         contextTrello.setVariable("message", message);
         makeListForIteration();
         makeDataTrelloContext();
@@ -32,6 +32,7 @@ public class MailCreatorService {
     }
 
     public String buildScheduledTrelloInfoMail(String message) {
+        contextTrello = new Context();
         contextTrello.setVariable("message", message);
         makeDataTrelloContext();
         return templateEngine.process("mail/scheduled-trello-cards-mail", contextTrello);
@@ -56,6 +57,7 @@ public class MailCreatorService {
     }
 
     private void makeListForIteration() {
+        functionality = new ArrayList<>();
         functionality.add("You can manage your tasks");
         functionality.add("Provides connection with Trello Account");
         functionality.add("Application allows sending tasks to Trello");
