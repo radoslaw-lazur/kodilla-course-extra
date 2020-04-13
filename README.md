@@ -6,7 +6,7 @@ The application has been deployed to Heroku Cloud Application Platform. The dyno
 After opening the link shown down below, please wait after app returns from inactivity.
 
 Below you can check the deployed look of the website.  
-[Radoslaw's shoppingList](https://radoslaw-lazur.github.io/) 
+[Radoslaw's website](https://radoslaw-lazur.github.io/) 
 
 ![](https://zapodaj.net/images/956c2edb3a509.png)
 
